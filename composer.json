@@ -1,0 +1,29 @@
+{
+    "name": "wxy545812093/vipkwd-framework",
+    "description": "php framework",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "vipkwd",
+            "email": "service@vipkwd.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.4",
+        "mikecao/flight": "*",
+        "topthink/think-template": "^2.0",
+        "catfan/medoo": "^1.7",
+        "hashids/hashids": "^4.1",
+        "masterexploder/phpthumb": "^2.1",
+        "filp/whoops": "^2.14",
+        "vipkwd/utils": "1.1.0-beta"
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://mirrors.aliyun.com/composer/"
+        }
+    }
+}

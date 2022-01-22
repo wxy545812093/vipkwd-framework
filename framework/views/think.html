@@ -1,0 +1,212 @@
+﻿<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{$website}</title>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <link rel="stylesheet" href="http://ckx9.hosts.run/layui/css/layui.css?t=1597573275" media="all">
+        <link rel="stylesheet" href="http://ckx9.hosts.run/nepa/css/admin.css?t=1597573275" media="all">
+        <link rel="stylesheet" href="http://ckx9.hosts.run/nepa/css/views/user/ck.gold.css?t=1597573275" media="all">
+        <link rel="icon" href="http://ckx9.hosts.run/favicon.ico" type="image/x-icon">
+        <link id="layuicss-layer" rel="stylesheet" href="http://ckx9.hosts.run/layui/css/modules/layer/default/layer.css?v=3.1.1?v=1597573276516" media="all">
+        <style>
+            div#ck-app-header{position: fixed;left:0;top:0;right:0;}
+            .layui-form .layui-input-block input{background:none !important;}
+            .layui-form .layui-col-lg12 {
+                border-bottom: 1px solid #353535;
+            }
+            input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+                color: #666;
+                /*font-size: 1rem;*/
+            }
+            input:-moz-placeholder, textarea:-moz-placeholder {
+                color: #666;
+                /*font-size: 1rem;*/
+            }
+            input::-moz-placeholder, textarea::-moz-placeholder {
+                color: #666;
+                /*font-size: 1rem;*/
+            }
+            input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+                color: #666;
+                /*font-size: 1rem;*/
+            }
+            .layui-body{
+                top: 3.2rem !important;
+            }body{overflow: hidden;}
+        </style>
+    </head>
+    <body>
+        <div id="app" class="nepadmin-sidebar-shrink">
+
+            <!-- 侧边菜单 -->
+            <div class="layui-header" id="ck-app-header">
+                <ul>
+                    <li id="header-back" style="visibility: visible;"></li>
+                    <li id="header-title">邀请注册</li>
+                    <li id="header-tips" disabled="disabled" style="visibility: visible;">&nbsp;</li>
+                </ul>
+            </div>
+            <!-- 主体内容 -->
+            <div class="layui-body ck-scroll-hide" id="app-body">
+                <div class="layui-fluid" id="VIEW-ureg" lay-title="邀请注册">
+                    <div class="layui-row layui-col-space15">
+
+                        <div class="layui-col-md12">
+
+                            <div class="layui-card">
+                                <div class="layui-card-body" style="position:relative;">
+
+                                    <div style="text-align: center; height: 3rem; font-size: 1.1rem; line-height: 3rem; margin-bottom: 1rem; ">
+                                        <span style="padding: .2rem 1rem;border: 1px solid #696969;border-radius: 5px;">当前推广码：{$code}</span>
+                                    </div>
+
+                                    <form class="layui-form" action="" lay-filter="component-form-ureg">
+                                        <div class="layui-row layui-col-space10 layui-form-item">
+                                            <div class="layui-col-lg12">
+                                                <label class="layui-form-label">手机号码 *</label>
+                                                <div class="layui-input-block">
+                                                    <input type="text" name="mobile" placeholder="请输入手机号码" lay-verify="required|phone" autocomplete="off" class="layui-input" value="">
+                                                </div>
+                                            </div>
+                                            <div class="layui-col-lg12">
+                                                <label class="layui-form-label">马甲昵称 *</label>
+                                                <div class="layui-input-block">
+                                                    <input type="text" name="nickname" lay-verify="required" placeholder="请取个网络昵称" autocomplete="off" class="layui-input" value="">
+                                                </div>
+                                            </div>
+                                            <div class="layui-col-lg12">
+                                                <label class="layui-form-label">微信账号 *</label>
+                                                <div class="layui-input-block">
+                                                    <input type="text" name="wechat" lay-verify="required" placeholder="请输入微信登录账号" autocomplete="off" class="layui-input" value="">
+                                                </div>
+                                            </div>
+                                            <div class="layui-col-lg12 layui-hide">
+                                                <label class="layui-form-label">支付宝号 *</label>
+                                                <div class="layui-input-block">
+                                                    <input type="text" name="alipay" data-lay-verify="required" placeholder="请输入支付宝登录账号" autocomplete="off" class="layui-input" value="">
+                                                </div>
+                                            </div>
+
+                                            <div class="layui-col-lg12">
+                                                <label class="layui-form-label">马甲密码 *</label>
+                                                <div class="layui-input-block">
+                                                    <input type="text" name="password" lay-verify="required" placeholder="请输入账号密码" autocomplete="off" class="layui-input" value="">
+                                                </div>
+                                            </div>
+
+                                            <div class="layui-col-lg12">
+                                                <label class="layui-form-label">推广编号 &nbsp;</label>
+                                                <div class="layui-input-block">
+                                                    <input type="text" name="code" value="{$code}" readonly disabled autocomplete="off" class="layui-input">
+                                                    <input type="hidden" name="hash" value="{$hash}">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="layui-form-item" style="margin-top:.3rem">
+                                                <button class="layui-btn layui-btn-fluid  layui-btn-radius" lay-submit="" lay-filter="component-form-ureg">
+                                                    <i style="display: none" class="layui-icon layui-icon-loading layui-icon layui-anim layui-anim-rotate layui-anim-loop"></i>
+                                                    创建账号
+                                                </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="view-transition-shade layui-hide"><img src="http://ckx9.hosts.run/public/images/loading.svg"></div>
+
+                <script charset="utf-8" type="text/javascript">
+
+                </script>
+
+            </div>
+        </div>
+        <script charset="utf-8" type="text/javascript" src="http://ckx9.hosts.run/layui/layui.js"></script>
+        <script charset="utf-8" type="text/javascript">
+            layui.config({
+                base: '/layui/lay/modules/',
+                version: '15974922350',
+                debug: true
+            }).use(['form', 'layer'], function (form, layer) {
+                var $ = layui.$, Rexp = {
+                    mobile: /^1[3-9][0-9]{9}$/,
+                    email: /^[1-9a-zA-Z]\w{4,15}\@([a-zA-Z0-9]{2,12}\.){1,3}[a-zA-Z]{2,6}$/,
+                }, tips = function(msg, n){
+                    layer.msg(msg, {icon: n || 2});
+                    return false;
+                };
+                //提交登录表单
+                form.on('submit(component-form-ureg)',function(data){
+                    data.field['referer'] = '{$code}';
+
+                    if( data.field.referer == data.field.mobile ){
+                        return tips('手机号已被注册!');
+                    }
+                    if( false === Rexp.mobile.test(data.field.mobile)){
+                        return tips('手机号码不合法!');
+                    }
+
+                    //if( false === Rexp.mobile.test(data.field.mobile) && Rexp.email.test(data.field.alipay) === false){
+                        //return tips('支付宝账号不合法!');
+                    //}
+
+                    if( data.field.password.length < 6){
+                        return tips('密码至少6位长度!');
+                    }
+                    if( data.field.password.length > 16){
+                        return tips('密码长到自己都难记住了吧？');
+                    }
+                    var ckpost = function(options, elem){
+
+                        var loading = $(this).find('.layui-icon');
+                        if(loading.is(":visible")) return false;
+
+                        let f = layer.confirm(options.info, {
+                            icon: 3,
+                            btn: ['确定', '我再想想'],
+                            title: false,
+                            closeBtn: 0
+                        }, function () {
+                            layer.close(f);
+                            loading.show();
+                            $.ajax({
+                                url: '/register/remx9.py',
+                                method:'post',
+                                dataType:'json',
+                                data: options.data,
+                                success: function(res){
+                                    if( res.code != '0'){
+                                        tips(res.msg);
+                                        loading.hide();
+                                        return !1;
+                                    }
+                                    tips('更新成功', 1);
+                                    //return false;
+                                    location.href = res.data;//location.href.split('register')[0];
+                                    return false;
+                                },
+                                error: function(){
+                                    loading.hide();
+                                }
+                            });
+                        });
+                        return false;
+                    };
+                    ckpost({
+                        info: '确定注册吗？',
+                        data: data.field
+                    });
+                    return false;
+                });
+            });
+        </script>
+    </body>
+</html>
