@@ -9,7 +9,7 @@
             "email": "service@vipkwd.com"
         }
     ],
-    "minimum-stability": "dev-main",
+    "minimum-stability": "dev",
     "require": {
         "php": ">=7.4",
         "mikecao/flight": "*",
