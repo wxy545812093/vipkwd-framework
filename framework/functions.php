@@ -236,6 +236,27 @@ if(!function_exists('authcode') ){
         }
     }
 }
+/**
+ * 提升数据列为键
+ *
+ * @param array $arr
+ * @param string $column
+ * @param boolean $cover <true> 遇相同column时，是否覆盖
+ * @return array
+ */
+function columnUptoKey(array $arr, string $column, bool $cover = true):array{
+    $data = [];
+    foreach($arr as $item){
+        if(isset($item[$column])){
+            if($cover || ($cover !== true && !isset($data[ $item[$column] ]) )){
+                $data[ $item[$column] ] = $item;
+            }
+        }
+        unset($item);
+    }
+    unset($arr, $column);
+    return $data;
+}
 
 function config(string $key){
     return \Vipkwd\Utils\Tools::config($key, FRAMEWORK_PATH.'/config');

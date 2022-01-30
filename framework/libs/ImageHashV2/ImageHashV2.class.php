@@ -137,7 +137,6 @@ class ImageHashV2 {
 			'distance' => $distance,
 			'result' => ($distance<=$allowGap) ?  "1" : "0"
 		];
-		return ($distance<=$allowGap) ? "1" : "0";
 	}
 
 

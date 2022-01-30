@@ -76,15 +76,25 @@ class Database extends Common{
 			unset($v, $vv);
 		}
 		if(!empty($_order_)){
+			$this->whereValidater();
 			$this->_where['ORDER'] = $_order_;
 		}
 		unset($order, $_order_);
 		return $this;
 	}
 
-	public function group($group){
-		$group = preg_replace('/\ /g','', $group);
+	private function whereValidater(){
+		if(!is_array($this->_where)){
+			$this->_where = [];
+		}
+	}
+	public function group(string $group){
+		$group = str_replace(' ','', $group);
+		$this->whereValidater();
 		$this->_where['GROUP'] = explode(',', $group);
+		// if(count($this->_where['GROUP']) == 1){
+			$this->_where['GROUP'] = $this->_where['GROUP'][0];
+		// }
 		return $this;
 	}
 
@@ -95,6 +105,7 @@ class Database extends Common{
 
 	public function fullText($keyword, array $columns){
 		if($keyword){
+			$this->whereValidater();
 			$this->_where['MATCH'] = [
 				"columns" => $columns,
 				"keyword" => $keyword,
@@ -115,16 +126,16 @@ class Database extends Common{
 	}
 
 	public function select(){
-		$where = $this->_where;
 		if($this->_page && $this->_limit){
 			if(!is_array($where)) $where = [];
-			$where['LIMIT'] = $this->_calcPageLimit();
+			$this->whereValidater();
+			$this->_where['LIMIT'] = $this->_calcPageLimit();
 		}
 
 		return $this->_database->select(
 			$this->_table,
 			$this->_field,
-			$where
+			$this->_where
 		);
 	}
 	public function getAll(){
