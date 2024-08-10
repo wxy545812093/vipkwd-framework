@@ -13,11 +13,11 @@ $handler->setPageTitle("Whoops! There was a problem.");
 // ]);
 
 $handler->setApplicationPaths([__FILE__]);
-$handler->addDataTableCallback('Trace', function(\Whoops\Exception\Inspector $inspector) {
+$handler->addDataTableCallback('Trace', function (\Whoops\Exception\Inspector $inspector) {
 	$data = array();
 	$exception = $inspector->getException();
 	if ($exception instanceof SomeSpecificException) {
-			$data['Important exception data'] = $exception->getSomeSpecificData();
+		$data['Important exception data'] = $exception->getSomeSpecificData();
 	}
 	$data['Class'] = get_class($exception);
 	$data['Code'] = $exception->getCode();
@@ -32,10 +32,10 @@ $whoops->pushHandler($handler);
 // Example: tag all frames inside a function with their function name
 $whoops->pushHandler(function ($exception, $inspector, $run) {
 	$inspector->getFrames()->map(function ($frame) {
-			if ($function = $frame->getFunction()) {
-					$frame->addComment("This frame is within function '$function'", 'cpt-obvious');
-			}
-			return $frame;
+		if ($function = $frame->getFunction()) {
+			$frame->addComment("This frame is within function '$function'", 'cpt-obvious');
+		}
+		return $frame;
 	});
 });
 
@@ -45,6 +45,6 @@ $whoops->pushHandler(function ($exception, $inspector, $run) {
 // page handler, and will have a chance to decide if anything
 // needs to be done.
 if (\Whoops\Util\Misc::isAjaxRequest()) {
-  $whoops->pushHandler(new \Whoops\Handler\JsonResponseHandler);
+	$whoops->pushHandler(new \Whoops\Handler\JsonResponseHandler);
 }
 $whoops->register();
